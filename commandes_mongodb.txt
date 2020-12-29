@@ -1,0 +1,26 @@
+1/ Create a database called "contact"
+> use contact
+
+2/ Create a collection called "contactlist" and insert these documents  in "contactlist"
+
+> db.contactlist.insertMany([{LastName: "Ben Lahmer", FirstName: "Fares", Email: "fares@gmail.com", age:26},{LastName: "Kefi", FirstName: "Seif", Email: "kefi@gmail.com", age:15},{LastName: "Fatnassi", FirstName: "Sarra", Email: "sarra.f@gmail.com", age:40},{LastName: "Ben Yahia", FirstName: "Rym", age:4},{LastName: "Cherif", FirstName: "Sami", age:3}]);
+
+
+3/ Display all the information about only one person using his id
+> db.contactlist.find(ObjectId('5feb8094365bc932de8a5514'))
+
+4/ Display all the contact list having age>18
+> db.contactlist.find({age: {$gt:18}})
+
+5/ Display all the contact list having age>18 and name containing "ah"
+> db.contactlist.find({age: {$gt:18}, $or:[{LastName:/ah/i},{FirstName:/ah/i}]})
+
+6/ Change the contact first name of "kefi Seif" by "Kefi Anis"
+> db.contactlist.update({LastName:"Kefi", FirstName:"Seif"},{$set:{FirstName:"Anis"}})
+
+7/ Delete the the contact list having age < 5
+> db.contactlist.deleteOne({age:{$lt:5}})
+
+8/ Display all the contact list
+> db.contactlist.find()
+
